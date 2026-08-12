@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VinylVault - Physical Music Collection</title>
+  <style>
+    :root { --primary: #1db954; --bg: #121212; --card: #181818; --text: #ffffff; --subtext: #b3b3b3; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 2rem; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #282828; padding-bottom: 1rem; }
+    .btn { background: var(--primary); color: black; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 20px; font-weight: bold; cursor: pointer; border: none; }
+    .tabs { display: flex; gap: 0.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
+    .tab-btn { background: #282828; color: var(--text); border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; }
+    .tab-btn.active { background: var(--primary); color: black; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .card { background: var(--card); border: 1px solid #282828; padding: 1rem; border-radius: 8px; }
+    .lucky-modal { background: #242424; border: 1px solid var(--primary); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem; display: none; }
+    .history-list { list-style: none; padding: 0; }
+    .history-item { background: var(--card); border-bottom: 1px solid #282828; padding: 0.8rem; display: flex; justify-content: space-between; }
+    .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-box { background: var(--card); padding: 1rem; border-radius: 8px; text-align: center; }
+    .stat-box h2 { color: var(--primary); margin: 0; font-size: 2rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>VinylVault</h1>
+      <p style="color: var(--subtext)">Physical Media Tracker</p>
+    </div>
+    <div>
+      <button class="btn" onclick="openLuckyModal()">🎲 I'm Feeling Lucky</button>
+      <a class="btn" href="https://github.com/YOUR_USERNAME/VinylVault/releases/latest" target="_blank">⬇ App Setup</a>
+    </div>
+  </header>
+  <div id="lucky-panel" class="lucky-modal">
+    <h2>🎲 What should you listen to?</h2>
+    <div id="lucky-questions">
+      <label>Format:
+        <select id="lucky-format">
+          <option value="ALL">Any Format</option>
+          <option value="Vinyl LP">Vinyl LP</option>
+          <option value="Vinyl 7&quot;">Vinyl 7"</option>
+          <option value="CD">CD</option>
+          <option value="Cassette">Cassette</option>
+        </select>
+      </label>
+      &nbsp;
+      <button class="btn" onclick="pickAlbum()">Spin the Wheel!</button>
+    </div>
+    <div id="lucky-result" style="margin-top: 1rem;"></div>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('collection', event)">Collection</button>
+    <button class="tab-btn" onclick="switchTab('wishlist', event)">Wishlist</button>
+    <button class="tab-btn" onclick="switchTab('history', event)">Listening History</button>
+    <button class="tab-btn" onclick="switchTab('stats', event)">Statistics</button>
+  </div>
+  <input type="text" id="search" placeholder="Search title, artist, format..." oninput="render()" style="width:100%; padding: 0.8rem; margin-bottom: 1rem; background: #282828; color: white; border: none; border-radius: 4px; box-sizing:border-box;">
+  <div id="views">
+    <div class="grid" id="main-grid"></div>
+    <ul class="history-list" id="history-view" style="display:none;"></ul>
+    <div id="stats-view" style="display:none;"><div class="stats-container" id="stats-boxes"></div></div>
+  </div>
+  <script>
+    // INJECTED_BY_JAVA_EXPORTER
+    const VAULT_DATA = /* [[DATA_PAYLOAD]] */;
+    let currentTab = 'collection';
+
+    function switchTab(tab, event) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (event && event.target) event.target.classList.add('active');
+
+      document.getElementById('main-grid').style.display = (tab === 'collection' || tab === 'wishlist') ? 'grid' : 'none';
+      document.getElementById('history-view').style.display = tab === 'history' ? 'block' : 'none';
+      document.getElementById('stats-view').style.display = tab === 'stats' ? 'block' : 'none';
+      document.getElementById('search').style.display = (tab === 'history' || tab === 'stats') ? 'none' : 'block';
+      render();
+    }
+
+    function render() {
+      if (currentTab === 'history') { renderHistory(); return; }
+      if (currentTab === 'stats')   { renderStats();   return; }
+
+      const items = currentTab === 'collection' ? (VAULT_DATA.collection || []) : (VAULT_DATA.wishlist || []);
+      const query = document.getElementById('search').value.toLowerCase();
+      const filtered = items.filter(i =>
+        i.title.toLowerCase().includes(query) ||
+        i.artist.toLowerCase().includes(query) ||
+        i.format.toLowerCase().includes(query)
+      );
+      document.getElementById('main-grid').innerHTML = filtered.map(item => `
+        <div class="card">
+          <h3 style="margin:0 0 4px">${item.title}</h3>
+          <p style="color:var(--subtext); margin:0 0 8px">${item.artist}</p>
+          <p style="margin:2px 0"><strong>Format:</strong> ${item.format}</p>
+          <p style="margin:2px 0"><strong>Year:</strong> ${item.releaseYear || '—'}</p>
+          <p style="margin:2px 0"><strong>Genre:</strong> ${item.genre || '—'}</p>
+          <p style="margin:2px 0"><strong>Condition:</strong> ${item.mediaCondition || '—'}</p>
+          <p style="margin:2px 0"><strong>Listens:</strong> ${item.playCount || 0}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderHistory() {
+      const hist = VAULT_DATA.listeningHistory || [];
+      document.getElementById('history-view').innerHTML = hist.length === 0
+        ? '<li class="history-item"><div>No listens logged yet.</div></li>'
+        : hist.map(h => `
+          <li class="history-item">
+            <div>
+              <strong>${h.albumTitle}</strong> — ${h.artist} <span style="color:var(--subtext)">(${h.format})</span>
+              ${h.notes ? `<div style="color:var(--subtext); font-size:0.85rem">${h.notes}</div>` : ''}
+            </div>
+            <span style="color:var(--subtext); white-space:nowrap">${new Date(h.listenedAt).toLocaleDateString()}</span>
+          </li>
+        `).join('');
+    }
+
+    function renderStats() {
+      const col  = VAULT_DATA.collection || [];
+      const wish = VAULT_DATA.wishlist   || [];
+      const hist = VAULT_DATA.listeningHistory || [];
+      const total = col.length;
+      const spent = col.reduce((s, i) => s + (i.purchasePrice || 0), 0);
+
+      const formats = col.reduce((acc, i) => (acc[i.format] = (acc[i.format] || 0) + 1, acc), {});
+      const decades = col.filter(i => i.releaseYear).reduce((acc, i) => {
+        const d = (Math.floor(i.releaseYear / 10) * 10) + 's';
+        acc[d] = (acc[d] || 0) + 1;
+        return acc;
+      }, {});
+
+      document.getElementById('stats-boxes').innerHTML = `
+        <div class="stat-box"><h2>${total}</h2><p>Total Owned</p></div>
+        <div class="stat-box"><h2>${wish.length}</h2><p>Wishlist Items</p></div>
+        <div class="stat-box"><h2>${hist.length}</h2><p>Listens Logged</p></div>
+        <div class="stat-box"><h2>$${spent.toFixed(2)}</h2><p>Total Spent</p></div>
+        ${Object.entries(formats).sort((a,b)=>b[1]-a[1]).map(([k,v]) =>
+          `<div class="stat-box"><h2>${v}</h2><p>${k}s</p></div>`).join('')}
+        ${Object.entries(decades).sort((a,b)=>a[0].localeCompare(b[0])).map(([k,v]) =>
+          `<div class="stat-box"><h2>${v}</h2><p>${k}</p></div>`).join('')}
+      `;
+    }
+
+    function openLuckyModal() {
+      const panel = document.getElementById('lucky-panel');
+      panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function pickAlbum() {
+      const fmt = document.getElementById('lucky-format').value;
+      let pool = VAULT_DATA.collection || [];
+      if (fmt !== 'ALL') pool = pool.filter(a => a.format === fmt);
+      if (pool.length === 0) {
+        document.getElementById('lucky-result').innerHTML = '<p>No matching records found!</p>';
+        return;
+      }
+      const chosen = pool[Math.floor(Math.random() * pool.length)];
+      document.getElementById('lucky-result').innerHTML = `
+        <div class="card" style="border-color:var(--primary)">
+          <h3>🎉 ${chosen.title}</h3>
+          <p><strong>Artist:</strong> ${chosen.artist}</p>
+          <p><strong>Format:</strong> ${chosen.format} · ${chosen.releaseYear || '—'}</p>
+          <p><strong>Genre:</strong> ${chosen.genre || '—'}</p>
+        </div>
+      `;
+    }
+
+    render();
+  </script>
+</body>
+</html>

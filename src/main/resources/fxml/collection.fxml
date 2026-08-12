@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane dividerPositions="0.55"
+           fx:controller="com.vinylvault.controller.CollectionController"
+           xmlns:fx="http://javafx.com/fxml">
+
+    <!-- ── Left: table + search ── -->
+    <VBox spacing="6">
+        <padding><Insets top="10" right="8" bottom="10" left="10"/></padding>
+
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <TextField fx:id="searchField" promptText="Search title, artist, format…" HBox.hgrow="ALWAYS"/>
+            <Button text="+ Add" onAction="#onAddNew" styleClass="btn-primary"/>
+        </HBox>
+
+        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colArtist"    text="Artist"    prefWidth="140"/>
+                <TableColumn fx:id="colTitle"     text="Title"     prefWidth="180"/>
+                <TableColumn fx:id="colFormat"    text="Format"    prefWidth="90"/>
+                <TableColumn fx:id="colGenre"     text="Genre"     prefWidth="90"/>
+                <TableColumn fx:id="colYear"      text="Year"      prefWidth="60"/>
+                <TableColumn fx:id="colPlays"     text="Plays"     prefWidth="55"/>
+                <TableColumn fx:id="colCondition" text="Cond."     prefWidth="55"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- ── Right: detail form ── -->
+    <ScrollPane fitToWidth="true">
+        <VBox spacing="8">
+            <padding><Insets top="10" right="10" bottom="10" left="8"/></padding>
+
+            <Label text="Title"/>         <TextField fx:id="fieldTitle"/>
+            <Label text="Artist"/>        <TextField fx:id="fieldArtist"/>
+            <Label text="Format"/>        <ComboBox fx:id="fieldFormat" maxWidth="Infinity"/>
+            <Label text="Genre"/>         <TextField fx:id="fieldGenre"/>
+            <Label text="Mood"/>          <ComboBox fx:id="fieldMood" maxWidth="Infinity"/>
+            <Label text="Release Year"/>  <TextField fx:id="fieldYear"/>
+            <Label text="Label"/>         <TextField fx:id="fieldLabel"/>
+            <Label text="Cat. Number"/>   <TextField fx:id="fieldCatalog"/>
+            <Label text="Barcode"/>       <TextField fx:id="fieldBarcode"/>
+            <Label text="Media Cond."/>   <ComboBox fx:id="fieldMediaCond" maxWidth="Infinity"/>
+            <Label text="Sleeve Cond."/>  <ComboBox fx:id="fieldSleeveCond" maxWidth="Infinity"/>
+            <Label text="Purchase Price"/> <TextField fx:id="fieldPrice"/>
+            <Label text="Notes"/>         <TextArea fx:id="fieldNotes" prefRowCount="3" wrapText="true"/>
+            <Label text="Tracklist (one per line)"/>
+            <TextArea fx:id="fieldTracklist" prefRowCount="5" wrapText="true"/>
+
+            <Separator/>
+            <Label text="Log a Listen — Session Notes (optional)"/>
+            <TextField fx:id="fieldListenNotes" promptText="e.g. Great vinyl night!"/>
+
+            <HBox spacing="8">
+                <Button text="💾 Save"        onAction="#onSave"       styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="🎧 Log Listen"  onAction="#onLogListen"  styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="🗑 Delete"      onAction="#onDelete"     styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+</SplitPane>
