@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.vinylvault.controller.MainController"
+            prefWidth="1100" prefHeight="700">
+
+    <!-- ── Top toolbar ── -->
+    <top>
+        <HBox spacing="10" styleClass="toolbar" alignment="CENTER_LEFT">
+            <padding><Insets top="10" right="16" bottom="10" left="16"/></padding>
+            <Label text="🎵 VinylVault" styleClass="app-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="🎲 I'm Feeling Lucky" onAction="#onOpenLucky" styleClass="btn-primary"/>
+            <Button text="⬇ Export Web View"   onAction="#onExportHtml" styleClass="btn-secondary"/>
+        </HBox>
+    </top>
+
+    <!-- ── Tab pane ── -->
+    <center>
+        <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+
+            <Tab fx:id="tabCollection" text="Collection">
+                <fx:include fx:id="collection" source="collection.fxml"/>
+            </Tab>
+
+            <Tab fx:id="tabWishlist" text="Wishlist">
+                <fx:include fx:id="wishlist" source="wishlist.fxml"/>
+            </Tab>
+
+            <Tab fx:id="tabHistory" text="Listening History">
+                <fx:include fx:id="history" source="history.fxml"/>
+            </Tab>
+
+            <Tab fx:id="tabStats" text="Statistics">
+                <fx:include fx:id="stats" source="stats.fxml"/>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

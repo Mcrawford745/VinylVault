@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true"
+            fx:controller="com.vinylvault.controller.StatsController"
+            xmlns:fx="http://javafx.com/fxml">
+    <VBox spacing="16">
+        <padding><Insets top="16" right="16" bottom="16" left="16"/></padding>
+        <Label text="Collection Statistics" styleClass="section-title"/>
+
+        <!-- Summary cards -->
+        <HBox spacing="12">
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Total Owned" styleClass="stat-label"/>
+                <Label fx:id="labelTotalOwned" text="0" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Wishlist Items" styleClass="stat-label"/>
+                <Label fx:id="labelTotalWishlist" text="0" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Total Listens" styleClass="stat-label"/>
+                <Label fx:id="labelTotalListens" text="0" styleClass="stat-value"/>
+            </VBox>
+            <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
+                <Label text="Total Spent" styleClass="stat-label"/>
+                <Label fx:id="labelTotalSpent" text="$0.00" styleClass="stat-value"/>
+            </VBox>
+        </HBox>
+
+        <!-- Breakdown sections -->
+        <HBox spacing="16" VBox.vgrow="ALWAYS">
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="By Format" styleClass="subsection-title"/>
+                <VBox fx:id="vboxFormats" spacing="4"/>
+            </VBox>
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="By Decade" styleClass="subsection-title"/>
+                <VBox fx:id="vboxDecades" spacing="4"/>
+            </VBox>
+            <VBox spacing="6" HBox.hgrow="ALWAYS">
+                <Label text="Top Artists" styleClass="subsection-title"/>
+                <VBox fx:id="vboxTopArtists" spacing="4"/>
+            </VBox>
+        </HBox>
+    </VBox>
+</ScrollPane>

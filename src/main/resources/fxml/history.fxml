@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="6"
+      fx:controller="com.vinylvault.controller.HistoryController"
+      xmlns:fx="http://javafx.com/fxml">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+    <Label text="Listening History" styleClass="section-title"/>
+
+    <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colDate"   text="Date"    prefWidth="140"/>
+            <TableColumn fx:id="colArtist" text="Artist"  prefWidth="160"/>
+            <TableColumn fx:id="colTitle"  text="Title"   prefWidth="200"/>
+            <TableColumn fx:id="colFormat" text="Format"  prefWidth="100"/>
+            <TableColumn fx:id="colNotes"  text="Notes"   prefWidth="300"/>
+        </columns>
+    </TableView>
+</VBox>

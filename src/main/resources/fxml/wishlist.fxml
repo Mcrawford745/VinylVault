@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<SplitPane dividerPositions="0.55"
+           fx:controller="com.vinylvault.controller.WishlistController"
+           xmlns:fx="http://javafx.com/fxml">
+
+    <VBox spacing="6">
+        <padding><Insets top="10" right="8" bottom="10" left="10"/></padding>
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <Button text="+ Add to Wishlist" onAction="#onAddNew" styleClass="btn-primary"/>
+        </HBox>
+        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colArtist" text="Artist" prefWidth="160"/>
+                <TableColumn fx:id="colTitle"  text="Title"  prefWidth="200"/>
+                <TableColumn fx:id="colFormat" text="Format" prefWidth="100"/>
+                <TableColumn fx:id="colYear"   text="Year"   prefWidth="70"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <VBox spacing="8">
+        <padding><Insets top="10" right="10" bottom="10" left="8"/></padding>
+        <Label text="Title"/>   <TextField fx:id="fieldTitle"/>
+        <Label text="Artist"/>  <TextField fx:id="fieldArtist"/>
+        <Label text="Format"/>  <ComboBox fx:id="fieldFormat" maxWidth="Infinity"/>
+        <Label text="Year"/>    <TextField fx:id="fieldYear"/>
+        <Label text="Genre"/>   <TextField fx:id="fieldGenre"/>
+        <Label text="Notes"/>   <TextArea  fx:id="fieldNotes" prefRowCount="4" wrapText="true"/>
+        <HBox spacing="8">
+            <Button text="💾 Save"              onAction="#onSave"             styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button text="✅ Move to Collection" onAction="#onMoveToCollection" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button text="🗑 Delete"             onAction="#onDelete"           styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        </HBox>
+    </VBox>
+</SplitPane>
