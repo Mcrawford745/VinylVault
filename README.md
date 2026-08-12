@@ -1,6 +1,6 @@
-# 🎵 VinylVault
+# VinylVault
 
-A zero-cost, serverless desktop app for managing your physical music collection — Vinyl LPs, 7" singles, CDs, and Cassettes.
+Serverless desktop app for managing your physical music collection — Vinyl LPs, 7" singles, CDs, and Cassettes.
 
 Built with **Java 21 + JavaFX 21 + Maven**. All data lives in a single `~/.vinylvault/vinylvault_db.json` file.
 
