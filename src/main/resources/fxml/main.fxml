@@ -11,10 +11,12 @@
     <top>
         <HBox spacing="10" styleClass="toolbar" alignment="CENTER_LEFT">
             <padding><Insets top="10" right="16" bottom="10" left="16"/></padding>
-            <Label text="🎵 VinylVault" styleClass="app-title"/>
+            <Label text="VinylVault" styleClass="app-title"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="🎲 I'm Feeling Lucky" onAction="#onOpenLucky" styleClass="btn-primary"/>
-            <Button text="⬇ Export Web View"   onAction="#onExportHtml" styleClass="btn-secondary"/>
+            <Label text="Theme:"/>
+            <ComboBox fx:id="comboTheme" prefWidth="210" styleClass="theme-picker"/>
+            <Button text="I'm Feeling Lucky" onAction="#onOpenLucky" styleClass="btn-primary"/>
+            <Button text="Export Web View"   onAction="#onExportHtml" styleClass="btn-secondary"/>
         </HBox>
     </top>
 

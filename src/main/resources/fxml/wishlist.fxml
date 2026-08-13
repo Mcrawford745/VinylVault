@@ -31,9 +31,9 @@
         <Label text="Genre"/>   <TextField fx:id="fieldGenre"/>
         <Label text="Notes"/>   <TextArea  fx:id="fieldNotes" prefRowCount="4" wrapText="true"/>
         <HBox spacing="8">
-            <Button text="💾 Save"              onAction="#onSave"             styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-            <Button text="✅ Move to Collection" onAction="#onMoveToCollection" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-            <Button text="🗑 Delete"             onAction="#onDelete"           styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button text="Save"               onAction="#onSave"             styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button text="Move to Collection" onAction="#onMoveToCollection" styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button text="Delete"             onAction="#onDelete"           styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
         </HBox>
     </VBox>
 </SplitPane>

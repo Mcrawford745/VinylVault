@@ -1,0 +1,13 @@
+/* Autumn Evening "Autumn Glow" — palette: 3c1518 69140e a44200 d58936 f2f3ae */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #3c1518;
+    -vv-surface:     #69140e;
+    -vv-surface-alt: #a44200;
+    -vv-border:      #a44200;
+    -vv-text:        #f2f3ae;
+    -vv-text-muted:  derive(#d58936, 8%);
+    -vv-accent:      #d58936;
+    -vv-on-accent:   #3c1518;
+    -vv-selection:   #a44200;
+    -vv-danger:      #ff4b3e;
+}

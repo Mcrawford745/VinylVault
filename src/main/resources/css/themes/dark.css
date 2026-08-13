@@ -1,0 +1,14 @@
+/* Dark Mode "Deep Sea" — palette: 0d1b2a 1b263b 415a77 778da9 e0e1dd */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #0d1b2a;
+    -vv-surface:     #1b263b;
+    -vv-surface-alt: #415a77;
+    -vv-border:      #415a77;
+    -vv-text:        #e0e1dd;
+    -vv-text-muted:  #778da9;
+    /* 778da9 lifted so the accent reads against 1b263b surfaces */
+    -vv-accent:      derive(#778da9, 30%);
+    -vv-on-accent:   #0d1b2a;
+    -vv-selection:   #415a77;
+    -vv-danger:      #c0392b;
+}

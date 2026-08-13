@@ -1,5 +1,6 @@
 package com.vinylvault;
 
+import com.vinylvault.service.ThemeService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +14,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/main.fxml"));
         Scene scene = new Scene(loader.load(), 1100, 700);
-        scene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
+        ThemeService.getInstance().register(scene);
         stage.setTitle("VinylVault — Physical Music Tracker");
         stage.setScene(scene);
         stage.show();

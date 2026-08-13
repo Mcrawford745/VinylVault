@@ -28,12 +28,12 @@
       <p style="color: var(--subtext)">Physical Media Tracker</p>
     </div>
     <div>
-      <button class="btn" onclick="openLuckyModal()">🎲 I'm Feeling Lucky</button>
-      <a class="btn" href="https://github.com/YOUR_USERNAME/VinylVault/releases/latest" target="_blank">⬇ App Setup</a>
+      <button class="btn" onclick="openLuckyModal()">I'm Feeling Lucky</button>
+      <a class="btn" href="https://github.com/YOUR_USERNAME/VinylVault/releases/latest" target="_blank">App Setup</a>
     </div>
   </header>
   <div id="lucky-panel" class="lucky-modal">
-    <h2>🎲 What should you listen to?</h2>
+    <h2>What should you listen to?</h2>
     <div id="lucky-questions">
       <label>Format:
         <select id="lucky-format">
@@ -159,7 +159,7 @@
       const chosen = pool[Math.floor(Math.random() * pool.length)];
       document.getElementById('lucky-result').innerHTML = `
         <div class="card" style="border-color:var(--primary)">
-          <h3>🎉 ${chosen.title}</h3>
+          <h3>${chosen.title}</h3>
           <p><strong>Artist:</strong> ${chosen.artist}</p>
           <p><strong>Format:</strong> ${chosen.format} · ${chosen.releaseYear || '—'}</p>
           <p><strong>Genre:</strong> ${chosen.genre || '—'}</p>

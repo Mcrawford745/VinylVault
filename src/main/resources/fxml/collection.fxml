@@ -55,9 +55,9 @@
             <TextField fx:id="fieldListenNotes" promptText="e.g. Great vinyl night!"/>
 
             <HBox spacing="8">
-                <Button text="💾 Save"        onAction="#onSave"       styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-                <Button text="🎧 Log Listen"  onAction="#onLogListen"  styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
-                <Button text="🗑 Delete"      onAction="#onDelete"     styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Save"        onAction="#onSave"       styleClass="btn-primary"   HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Log Listen"  onAction="#onLogListen"  styleClass="btn-secondary" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                <Button text="Delete"      onAction="#onDelete"     styleClass="btn-danger"    HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
             </HBox>
         </VBox>
     </ScrollPane>

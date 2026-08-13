@@ -1,0 +1,14 @@
+/* Minimalist Monochrome "Silver Lining" (light) — palette: 595959 7f7f7f a5a5a5 cccccc f2f2f2 */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #f2f2f2;
+    -vv-surface:     derive(#f2f2f2, 45%);
+    -vv-surface-alt: #cccccc;
+    -vv-border:      #a5a5a5;
+    /* 595959 darkened for body text contrast; palette greys stay for chrome */
+    -vv-text:        derive(#595959, -40%);
+    -vv-text-muted:  #595959;
+    -vv-accent:      #595959;
+    -vv-on-accent:   #f2f2f2;
+    -vv-selection:   #cccccc;
+    -vv-danger:      #c0392b;
+}

@@ -1,0 +1,15 @@
+/* High Contrast "Vibrant Color Fiesta" (accessible dark)
+   palette: ffbe0b fb5607 ff006e 8338ec 3a86ff 000000
+   Pure-black field with a ~11:1 amber accent and white body text. */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #000000;
+    -vv-surface:     #121212;
+    -vv-surface-alt: #1f1f1f;
+    -vv-border:      #5a5a5a;
+    -vv-text:        #ffffff;
+    -vv-text-muted:  #d6d6d6;
+    -vv-accent:      #ffbe0b;
+    -vv-on-accent:   #000000;
+    -vv-selection:   #8338ec;
+    -vv-danger:      #ff006e;
+}

@@ -1,0 +1,13 @@
+/* Winter Blues "Coastal Blues" — palette: 012a4a 013a63 01497c 014f86 2a6f97 2c7da0 468faf 61a5c2 89c2d9 a9d6e5 */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #012a4a;
+    -vv-surface:     #013a63;
+    -vv-surface-alt: #01497c;
+    -vv-border:      #2a6f97;
+    -vv-text:        #a9d6e5;
+    -vv-text-muted:  #89c2d9;
+    -vv-accent:      #61a5c2;
+    -vv-on-accent:   #012a4a;
+    -vv-selection:   #2c7da0;
+    -vv-danger:      #c0392b;
+}

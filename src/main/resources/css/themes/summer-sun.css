@@ -1,0 +1,15 @@
+/* Summer Sun "Sunny Delight" (light) — palette: 582707 972d07 ff4b3e ffb20f ffe548 */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    /* ffe548 at full strength is unreadable as a page field; lightened. */
+    -vv-bg:          derive(#ffe548, 68%);
+    -vv-surface:     derive(#ffe548, 40%);
+    -vv-surface-alt: #ffb20f;
+    -vv-border:      derive(#ffb20f, -12%);
+    -vv-text:        #582707;
+    -vv-text-muted:  #972d07;
+    /* ff4b3e on yellow is ~2:1 — 972d07 chosen for contrast; ff4b3e kept for danger */
+    -vv-accent:      #972d07;
+    -vv-on-accent:   #ffe548;
+    -vv-selection:   #ffb20f;
+    -vv-danger:      #ff4b3e;
+}

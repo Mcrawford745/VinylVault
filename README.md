@@ -2,7 +2,7 @@
 
 Serverless desktop app for managing your physical music collection — Vinyl LPs, 7" singles, CDs, and Cassettes.
 
-Built with **Java 21 + JavaFX 21 + Maven**. All data lives in a single `~/.vinylvault/vinylvault_db.json` file.
+Built with **Java 17 + JavaFX 17 + Maven**. All data lives in a single `~/.vinylvault/vinylvault_db.json` file.
 
 ---
 
@@ -20,7 +20,7 @@ Built with **Java 21 + JavaFX 21 + Maven**. All data lives in a single `~/.vinyl
 
 ## Prerequisites
 
-- Java 21 JDK
+- Java 17 JDK
 - Apache Maven 3.8+
 
 ---
@@ -39,7 +39,7 @@ Add the `maven-shade-plugin` or `jpackage` to `pom.xml` to produce a standalone 
 
 ## Export Web View
 
-Click **⬇ Export Web View** in the toolbar. The file is written to `./dist/index.html` relative to the working directory. Push it to a GitHub Pages branch to share your collection online.
+Click **Export Web View** in the toolbar. The file is written to `./dist/index.html` relative to the working directory. Push it to a GitHub Pages branch to share your collection online.
 
 ---
 

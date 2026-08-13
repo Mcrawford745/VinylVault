@@ -47,7 +47,7 @@ public class LuckyModalController {
         }
 
         result.ifPresentOrElse(a -> {
-            labelResult.setText("🎉 " + a.getTitle());
+            labelResult.setText(a.getTitle());
             if (labelArtist != null) labelArtist.setText(a.getArtist());
             if (labelFormat != null) labelFormat.setText(a.getFormat() + " · " + a.getReleaseYear());
         }, () -> {

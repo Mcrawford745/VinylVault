@@ -26,7 +26,7 @@
             </VBox>
             <VBox styleClass="stat-card" HBox.hgrow="ALWAYS">
                 <Label text="Total Spent" styleClass="stat-label"/>
-                <Label fx:id="labelTotalSpent" text="$0.00" styleClass="stat-value"/>
+                <Label fx:id="labelTotalSpent" text="\$0.00" styleClass="stat-value"/>
             </VBox>
         </HBox>
 

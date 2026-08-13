@@ -1,0 +1,14 @@
+/* Light Mode — palette: ffffff f5f7ff 00061a 8c96b5 b9c3df e0e7fa 426ff5 */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #ffffff;
+    -vv-surface:     #f5f7ff;
+    -vv-surface-alt: #e0e7fa;
+    -vv-border:      #b9c3df;
+    -vv-text:        #00061a;
+    /* palette's 8c96b5 is only ~3:1 on white; darkened for legible muted text */
+    -vv-text-muted:  derive(#8c96b5, -28%);
+    -vv-accent:      #426ff5;
+    -vv-on-accent:   #ffffff;
+    -vv-selection:   #e0e7fa;
+    -vv-danger:      #c0392b;
+}

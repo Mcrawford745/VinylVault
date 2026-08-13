@@ -1,0 +1,13 @@
+/* Purple Haze "Vivid Nightfall" — palette: 10002b 240046 3c096c 5a189a 7b2cbf 9d4edd c77dff e0aaff */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    -vv-bg:          #10002b;
+    -vv-surface:     #240046;
+    -vv-surface-alt: #3c096c;
+    -vv-border:      #5a189a;
+    -vv-text:        #e0aaff;
+    -vv-text-muted:  #9d4edd;
+    -vv-accent:      #c77dff;
+    -vv-on-accent:   #10002b;
+    -vv-selection:   #5a189a;
+    -vv-danger:      #ff4b6e;
+}

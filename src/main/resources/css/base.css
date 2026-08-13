@@ -1,0 +1,399 @@
+/* ====================================================
+   VinylVault — Base Stylesheet (structure only)
+
+   Contains NO literal colours. Every colour is a
+   looked-up variable defined by the active theme file
+   in /css/themes/. Load order is always:
+       base.css  +  themes/<name>.css
+   ==================================================== */
+
+/* ── Root ── */
+.root {
+    -fx-font-family: "System";
+    -fx-base: -vv-bg;
+    -fx-background: -vv-bg;
+    -fx-control-inner-background: -vv-surface;
+    -fx-accent: -vv-accent;
+    -fx-focus-color: -vv-accent;
+    -fx-faint-focus-color: transparent;
+    -fx-text-background-color: -vv-text;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    -fx-background-color: -vv-surface;
+    -fx-border-color: -vv-border;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* ── Titles ── */
+.app-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -vv-accent;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -vv-text;
+}
+
+.subsection-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -vv-text-muted;
+    -fx-border-color: -vv-border;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 0 4 0;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+    -fx-background-color: -vv-accent;
+    -fx-text-fill: -vv-on-accent;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: derive(-vv-accent, 18%);
+}
+
+.btn-secondary {
+    -fx-background-color: -vv-surface-alt;
+    -fx-text-fill: -vv-text;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: derive(-vv-surface-alt, 18%);
+}
+
+.btn-danger {
+    -fx-background-color: -vv-danger;
+    -fx-text-fill: -vv-on-accent;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.btn-danger:hover {
+    -fx-background-color: derive(-vv-danger, 18%);
+}
+
+/* ── Text fields / TextArea ── */
+.text-field, .text-area {
+    -fx-background-color: -vv-surface-alt;
+    -fx-text-fill: -vv-text;
+    -fx-prompt-text-fill: -vv-text-muted;
+    -fx-background-radius: 4;
+    -fx-border-color: -vv-border;
+    -fx-border-radius: 4;
+}
+
+.text-area .content {
+    -fx-background-color: -vv-surface-alt;
+}
+
+/* ── ComboBox ── */
+.combo-box {
+    -fx-background-color: -vv-surface-alt;
+    -fx-background-radius: 4;
+    -fx-mark-color: -vv-accent;
+}
+
+/* The displayed value and the arrow are children painted on top of the
+   ComboBox background. Giving them their own opaque fill makes square
+   corners overhang the parent's rounded edge, so they stay transparent
+   and let the parent supply the shape. */
+.combo-box .list-cell {
+    -fx-text-fill: -vv-text;
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: -vv-surface-alt;
+    -fx-border-color: -vv-border;
+    /* Inset the cells so a highlighted first/last row cannot paint over the
+       popup's rounded corners. JavaFX has no :first-child, so padding on the
+       container is the reliable way to keep the corners clean. */
+    -fx-padding: 4;
+}
+
+.combo-box-popup .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -vv-text;
+    -fx-padding: 4 8 4 8;
+}
+
+.combo-box-popup .list-cell:filled:hover,
+.combo-box-popup .list-cell:filled:selected {
+    -fx-background-color: -vv-selection;
+    -fx-background-radius: 4;
+    -fx-text-fill: -vv-text;
+}
+
+/* Theme picker in the toolbar — pill shaped to match the toolbar buttons.
+   Padding keeps the label clear of the rounded ends. */
+.theme-picker {
+    -fx-background-color: -vv-surface-alt;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-border-color: -vv-border;
+    /* Vertical padding gives the pill enough height for a 20px radius to
+       read as rounded rather than as a squashed oval. */
+    -fx-padding: 4 2 4 6;
+}
+
+.theme-picker .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 4;
+}
+
+.theme-picker .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 20 20 0;
+    -fx-padding: 0 6 0 2;
+}
+
+/* The popup is a separate rounded surface; square cells would overhang its
+   corners, so the list view clips its children to the same radius. */
+.combo-box-popup > .list-view {
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+/* ── TabPane ── */
+.tab-pane {
+    -fx-tab-min-height: 36px;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: -vv-surface;
+}
+
+.tab-pane .tab {
+    -fx-background-color: -vv-surface-alt;
+    -fx-padding: 4 16;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: -vv-bg;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: -vv-text-muted;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: -vv-accent;
+    -fx-font-weight: bold;
+}
+
+/* ── TableView ── */
+.table-view {
+    -fx-background-color: -vv-bg;
+    -fx-border-color: -vv-border;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: -vv-surface;
+    -fx-border-color: -vv-border;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: -vv-text-muted;
+    -fx-font-weight: bold;
+}
+
+.table-view .placeholder .label {
+    -fx-text-fill: -vv-text-muted;
+}
+
+.table-row-cell {
+    -fx-background-color: -vv-bg;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -vv-surface;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -vv-selection;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: -vv-text;
+}
+
+.table-row-cell .table-cell {
+    -fx-text-fill: -vv-text;
+}
+
+/* ── Statistics cards ── */
+.stat-card {
+    -fx-background-color: -vv-surface;
+    -fx-border-color: -vv-border;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-alignment: CENTER;
+    -fx-spacing: 4;
+}
+
+.stat-label {
+    -fx-text-fill: -vv-text-muted;
+    -fx-font-size: 11px;
+}
+
+.stat-value {
+    -fx-text-fill: -vv-accent;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+/* ── Lucky modal ── */
+.lucky-result-box {
+    -fx-background-color: -vv-surface;
+    -fx-border-color: -vv-accent;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+}
+
+.lucky-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -vv-accent;
+}
+
+.lucky-artist {
+    -fx-text-fill: -vv-text;
+}
+
+.lucky-sub {
+    -fx-text-fill: -vv-text-muted;
+    -fx-font-size: 11px;
+}
+
+/* ── ScrollPane ── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: -vv-surface;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -vv-border;
+    -fx-background-radius: 8;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -vv-text-muted;
+}
+
+/* ── Labels (general) ──
+   Kept ahead of the specific label styles below: equal-specificity rules are
+   resolved by order in JavaFX, so a generic .label here would otherwise
+   override .stat-value / .app-title and flatten their accent colours. */
+.label {
+    -fx-text-fill: -vv-text;
+}
+
+/* Re-assert the accent-coloured labels after the generic .label rule. */
+.stat-value {
+    -fx-text-fill: -vv-accent;
+}
+
+.app-title {
+    -fx-text-fill: -vv-accent;
+}
+
+.lucky-title {
+    -fx-text-fill: -vv-accent;
+}
+
+.stat-label, .lucky-sub, .subsection-title {
+    -fx-text-fill: -vv-text-muted;
+}
+
+/* ── Separator ── */
+.separator .line {
+    -fx-border-color: -vv-border;
+}
+
+/* ── RadioButton / CheckBox ── */
+.radio-button, .check-box {
+    -fx-text-fill: -vv-text;
+}
+
+.radio-button .radio, .check-box .box {
+    -fx-background-color: -vv-surface-alt;
+    -fx-border-color: -vv-border;
+}
+
+.radio-button:selected .radio {
+    -fx-background-color: -vv-accent;
+}
+
+.check-box:selected .box {
+    -fx-background-color: -vv-accent;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -vv-on-accent;
+}
+
+/* ── DatePicker ── */
+.date-picker .text-field {
+    -fx-background-color: -vv-surface-alt;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: -vv-surface-alt;
+}
+
+/* ── Dialogs / Alerts ── */
+.dialog-pane {
+    -fx-background-color: -vv-bg;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: -vv-text;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: -vv-surface;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: -vv-text;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .button {
+    -fx-background-color: -vv-surface-alt;
+    -fx-text-fill: -vv-text;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: derive(-vv-surface-alt, 18%);
+}

@@ -8,16 +8,18 @@
       prefWidth="460" prefHeight="340">
     <padding><Insets top="20" right="24" bottom="20" left="24"/></padding>
 
-    <Label text="🎲 I'm Feeling Lucky" styleClass="app-title"/>
+    <fx:define>
+        <ToggleGroup fx:id="modeGroup"/>
+    </fx:define>
+
+    <Label text="I'm Feeling Lucky" styleClass="app-title"/>
     <Label text="Pick your listening mode:" styleClass="section-title"/>
 
-    <ToggleGroup fx:id="modeGroup"/>
-
     <HBox spacing="12">
-        <RadioButton fx:id="radioRandom"   text="Random"             toggleGroup="$modeGroup" selected="true"/>
-        <RadioButton fx:id="radioFormat"   text="By Format"          toggleGroup="$modeGroup"/>
-        <RadioButton fx:id="radioMood"     text="By Mood"            toggleGroup="$modeGroup"/>
-        <RadioButton fx:id="radioForgotten" text="Forgotten Favorites" toggleGroup="$modeGroup"/>
+        <RadioButton fx:id="radioRandom"    text="Random"              toggleGroup="$modeGroup" selected="true"/>
+        <RadioButton fx:id="radioFormat"    text="By Format"           toggleGroup="$modeGroup"/>
+        <RadioButton fx:id="radioMood"      text="By Mood"             toggleGroup="$modeGroup"/>
+        <RadioButton fx:id="radioForgotten" text="Forgotten Favorites"  toggleGroup="$modeGroup"/>
     </HBox>
 
     <HBox spacing="10" alignment="CENTER_LEFT">
@@ -27,7 +29,7 @@
         <ComboBox fx:id="comboMood"   prefWidth="130"/>
     </HBox>
 
-    <Button text="🎰 Spin the Wheel!" onAction="#onSpin" styleClass="btn-primary" maxWidth="Infinity"/>
+    <Button text="Spin the Wheel!" onAction="#onSpin" styleClass="btn-primary" maxWidth="Infinity"/>
 
     <Separator/>
 

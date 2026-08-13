@@ -1,0 +1,14 @@
+/* Spring Breeze "Cool Waters" (light) — palette: 22577a 38a3a5 57cc99 80ed99 c7f9cc */
+.root, .combo-box-popup > .list-view, .context-menu, .tooltip {
+    /* c7f9cc lightened for the page field; saturated mint stays for controls */
+    -vv-bg:          derive(#c7f9cc, 55%);
+    -vv-surface:     #c7f9cc;
+    -vv-surface-alt: #80ed99;
+    -vv-border:      #57cc99;
+    -vv-text:        #22577a;
+    -vv-text-muted:  derive(#38a3a5, -18%);
+    -vv-accent:      #22577a;
+    -vv-on-accent:   #c7f9cc;
+    -vv-selection:   #80ed99;
+    -vv-danger:      #c0392b;
+}
